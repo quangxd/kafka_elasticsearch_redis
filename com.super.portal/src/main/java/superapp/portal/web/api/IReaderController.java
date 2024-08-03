@@ -12,7 +12,7 @@ import superapp.portal.web.model.AppStatus;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/writer")
+@RequestMapping("/api/v1/reader")
 @RequiredArgsConstructor
 @Slf4j
 public class IReaderController {

@@ -13,9 +13,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UserRedisService {
+public class UserRedisWriteService {
 
-    private static final String RAW_KEY = "USER";
     private final RedisTemplate<String, Object> redisTemplate;
 
     protected String getKeyFrom(String keyword, UUID id) {

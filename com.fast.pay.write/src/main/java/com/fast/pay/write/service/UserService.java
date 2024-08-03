@@ -21,7 +21,7 @@ import java.util.UUID;
 public class UserService {
     private final ObjectMapper objectMapper;
     private final UserRepository userRepository;
-    private final UserRedisService userRedisService;
+    private final UserRedisWriteService userRedisService;
     private final UserAuditTrialRepository userAuditTrialRepository;
 
     @KafkaListener(topics = "create-user", groupId = "writer")
@@ -51,6 +51,12 @@ public class UserService {
             //delete List User by wildcard key
             log.info("Redis START delete all documents match wildcard: {}", "all_user:*");
             userRedisService.delete("all_user:*");
+
+            //update newest data on Redis
+            log.info("Redis START update all documents to Redis");
+//            userRedisService.putAll(
+//                    userRepository.findAll()
+//            );
         }
 
         return user;
@@ -92,6 +98,12 @@ public class UserService {
         //delete List User by wildcard key
         log.info("Redis START delete all documents match wildcard: {}", "all_user:*");
         userRedisService.delete("all_user:*");
+
+        //update newest data on Redis
+        log.info("Redis START update all documents to Redis");
+        userRedisService.putAll(
+                userRepository.findAll()
+        );
 
         return user;
     }

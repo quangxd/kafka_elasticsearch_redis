@@ -1,8 +1,10 @@
 package superapp.portal.web.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class AppStatus <T extends Object> {
     private String httpCode;
     private String message;

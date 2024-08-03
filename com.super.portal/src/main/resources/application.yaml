@@ -6,3 +6,8 @@ spring:
     compatibility-verifier:
       enabled: false
 
+global-i18n:
+  locale_language: "Vi"
+  locale_country: ""
+
+
